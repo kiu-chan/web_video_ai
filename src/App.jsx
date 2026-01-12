@@ -1,6 +1,6 @@
 // src/App.jsx
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { publicRoutes, privateRoutes } from './routes';
+import { publicRoutes, privateRoutes, userRoutes } from './routes';
 import DefaultLayout from './components/Layout/DefaultLayout';
 import { AuthProvider } from './contexts/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
@@ -36,6 +36,28 @@ function App() {
                     <Layout>
                       <Page />
                     </Layout>
+                  }
+                />
+              );
+            })}
+
+            {/* User Routes (không cần authentication cho demo) */}
+            {userRoutes.map((route, index) => {
+              const Page = route.component;
+              const Layout = route.layout;
+              
+              return (
+                <Route
+                  key={`user-${index}`}
+                  path={route.path}
+                  element={
+                    Layout ? (
+                      <Layout>
+                        <Page />
+                      </Layout>
+                    ) : (
+                      <Page />
+                    )
                   }
                 />
               );

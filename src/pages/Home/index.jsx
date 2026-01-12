@@ -1,6 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       {/* Hero Section */}
@@ -16,7 +19,10 @@ const Home = () => {
             Biến ý tưởng của bạn thành video chất lượng cao chỉ với vài cú click. 
             Không cần kỹ năng chỉnh sửa video phức tạp.
           </p>
-          <button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:shadow-lg transition">
+          <button 
+            onClick={() => navigate('/user/create-video')}
+            className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:shadow-lg transition"
+          >
             Bắt Đầu Tạo Video
           </button>
         </div>

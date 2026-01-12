@@ -16,7 +16,7 @@ const DefaultLayout = ({ children }) => {
               <a href="/" className="text-gray-700 hover:text-purple-600 transition">
                 Trang chủ
               </a>
-              <a href="/create" className="text-gray-700 hover:text-purple-600 transition">
+              <a href="/user/create-video" className="text-gray-700 hover:text-purple-600 transition">
                 Tạo video
               </a>
               <a href="/library" className="text-gray-700 hover:text-purple-600 transition">
