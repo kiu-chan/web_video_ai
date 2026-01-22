@@ -76,32 +76,6 @@ const Gallery = () => {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="bg-white rounded-3xl shadow-lg p-8 border border-purple-100">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-3">
-              Thư Viện Video
-            </h1>
-            <p className="text-gray-600 text-lg">
-              {filteredVideos.length} video trong thư viện của bạn
-            </p>
-          </div>
-          <div className="hidden md:flex items-center space-x-4">
-            <div className="text-center">
-              <p className="text-3xl font-bold text-purple-600">{videos.length}</p>
-              <p className="text-sm text-gray-500">Tổng video</p>
-            </div>
-            <div className="w-px h-12 bg-gray-200"></div>
-            <div className="text-center">
-              <p className="text-3xl font-bold text-blue-600">
-                {videos.reduce((sum, v) => sum + v.views, 0)}
-              </p>
-              <p className="text-sm text-gray-500">Lượt xem</p>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Filter Tabs */}
       <div className="bg-white rounded-3xl shadow-lg p-2 border border-purple-100">

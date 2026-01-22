@@ -82,23 +82,6 @@ const UserLayout = ({ children }) => {
                   <p className="text-xs text-gray-500 font-medium">Creator Studio</p>
                 </div>
               </Link>
-              <button
-                onClick={toggleSidebar}
-                className="md:hidden text-gray-600 hover:text-purple-600 transition-colors"
-              >
-                <FaTimes size={24} />
-              </button>
-            </div>
-
-            {/* User Info */}
-            <div className="flex items-center space-x-3 p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md">
-                U
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-bold text-gray-800 truncate">User Account</p>
-                <p className="text-xs text-gray-500">Free Plan</p>
-              </div>
             </div>
           </div>
 
@@ -112,22 +95,45 @@ const UserLayout = ({ children }) => {
                     <Link
                       to={item.path}
                       onClick={() => setIsSidebarOpen(false)}
-                      className={`group flex items-start space-x-4 px-5 py-4 rounded-2xl transition-all duration-300 ${
+                      className={`group relative flex items-center h-[72px] px-5 rounded-2xl transition-all duration-500 ease-in-out overflow-hidden ${
                         isActive
-                          ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg shadow-purple-500/30 scale-105'
-                          : 'text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 hover:scale-102'
+                          ? 'text-white shadow-lg shadow-purple-500/30 scale-105'
+                          : 'text-gray-700 hover:scale-102'
                       }`}
                     >
-                      <div className={`mt-0.5 transition-transform duration-300 ${
-                        isActive ? '' : 'group-hover:scale-110'
-                      }`}>
-                        <item.icon size={20} className={isActive ? 'text-white' : 'text-purple-600'} />
+                      {/* Background layer với transition */}
+                      <div className={`absolute inset-0 rounded-2xl transition-all duration-500 ease-in-out ${
+                        isActive 
+                          ? 'bg-gradient-to-r from-purple-600 to-blue-600 opacity-100' 
+                          : 'bg-gradient-to-r from-purple-50 to-blue-50 opacity-0 group-hover:opacity-100'
+                      }`}></div>
+                      
+                      {/* Icon với animation trượt */}
+                      <div 
+                        className={`absolute z-10 transition-all duration-500 ease-in-out transform ${
+                          isActive 
+                            ? 'right-5 translate-x-0' 
+                            : 'left-5 translate-x-0 group-hover:scale-110'
+                        }`}
+                        style={{
+                          transition: 'left 0.5s ease-in-out, right 0.5s ease-in-out, transform 0.3s ease'
+                        }}
+                      >
+                        <item.icon size={20} className={`transition-colors duration-500 ${isActive ? 'text-white' : 'text-purple-600'}`} />
                       </div>
-                      <div className="flex-1">
-                        <p className={`font-bold text-sm ${isActive ? 'text-white' : 'text-gray-800'}`}>
+                      
+                      {/* Text content với animation căn chỉnh */}
+                      <div 
+                        className={`relative z-10 w-full transition-all duration-500 ease-in-out ${
+                          isActive 
+                            ? 'text-right pr-10 pl-2' 
+                            : 'text-left pl-10 pr-2'
+                        }`}
+                      >
+                        <p className={`font-bold text-sm transition-colors duration-500 ${isActive ? 'text-white' : 'text-gray-800'}`}>
                           {item.label}
                         </p>
-                        <p className={`text-xs mt-0.5 ${
+                        <p className={`text-xs mt-0.5 transition-colors duration-500 ${
                           isActive ? 'text-purple-100' : 'text-gray-500'
                         }`}>
                           {item.description}
@@ -144,7 +150,7 @@ const UserLayout = ({ children }) => {
           <div className="relative p-4 border-t border-purple-100">
             <button
               onClick={handleLogout}
-              className="flex items-center space-x-3 w-full px-5 py-4 text-gray-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-pink-50 rounded-2xl transition-all duration-300 group"
+              className="flex items-center justify-start space-x-3 w-full px-5 py-4 text-gray-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-pink-50 rounded-2xl transition-all duration-300 group"
             >
               <FaSignOutAlt size={18} className="text-red-500 group-hover:scale-110 transition-transform" />
               <span className="font-semibold text-sm">Đăng Xuất</span>

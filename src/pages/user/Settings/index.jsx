@@ -38,19 +38,6 @@ const Settings = () => {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="bg-white rounded-3xl shadow-lg p-8 border border-purple-100">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-3">
-              Cài Đặt
-            </h1>
-            <p className="text-gray-600 text-lg">
-              Quản lý tài khoản và tùy chỉnh trải nghiệm của bạn
-            </p>
-          </div>
-        </div>
-      </div>
 
       <div className="grid lg:grid-cols-4 gap-6">
         {/* Sidebar */}

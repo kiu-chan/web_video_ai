@@ -131,24 +131,6 @@ const History = () => {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="bg-white rounded-3xl shadow-lg p-8 border border-purple-100">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-3">
-              Lịch Sử Hoạt Động
-            </h1>
-            <p className="text-gray-600 text-lg">
-              Theo dõi tất cả hoạt động của bạn trên hệ thống
-            </p>
-          </div>
-          <div className="hidden md:block">
-            <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-blue-500 rounded-3xl flex items-center justify-center shadow-lg">
-              <FaClock className="text-white text-3xl" />
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Filter */}
       <div className="bg-white rounded-3xl shadow-lg p-2 border border-purple-100">

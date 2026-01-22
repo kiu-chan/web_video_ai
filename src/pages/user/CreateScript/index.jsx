@@ -78,25 +78,6 @@ Cảm ơn các bạn đã theo dõi! Đừng quên like và subscribe để ủn
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="bg-white rounded-3xl shadow-lg p-8 border border-purple-100">
-        <div className="flex items-start justify-between">
-          <div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-3">
-              Tạo Kịch Bản AI
-            </h1>
-            <p className="text-gray-600 text-lg">
-              AI viết kịch bản video chuyên nghiệp cho bạn trong vài giây
-            </p>
-          </div>
-          <div className="hidden md:block">
-            <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-blue-500 rounded-3xl flex items-center justify-center shadow-lg animate-bounce">
-              <FaFileAlt className="text-white text-3xl" />
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div className="grid lg:grid-cols-3 gap-6">
         {/* Input Section */}
         <div className="lg:col-span-2 space-y-6">
