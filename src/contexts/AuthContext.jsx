@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     // Check if user is logged in
-    const token = localStorage. getItem('adminToken');
+    const token = localStorage.getItem('authToken');
     const userInfo = localStorage.getItem('userInfo');
     
     if (token && userInfo) {
@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
         setCurrentUser(JSON.parse(userInfo));
       } catch (error) {
         console.error('Error parsing user info:', error);
-        localStorage.removeItem('adminToken');
+        localStorage.removeItem('authToken');
         localStorage.removeItem('userInfo');
       }
     }
@@ -35,26 +35,43 @@ export const AuthProvider = ({ children }) => {
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000));
 
+    // Check for admin credentials
     if (username === 'admin' && password === 'admin123') {
       const userInfo = {
         username: 'admin',
         name: 'Administrator',
         role: 'admin',
-        email: 'admin@localizy.com'
+        email: 'admin@aivideo.com'
       };
       
-      localStorage.setItem('adminToken', 'fake-admin-token');
+      localStorage.setItem('authToken', 'admin-token-' + Date.now());
       localStorage.setItem('userInfo', JSON.stringify(userInfo));
       setCurrentUser(userInfo);
       
       return { success: true, user: userInfo };
-    } else {
+    } 
+    // Check for user credentials
+    else if (username === 'user' && password === 'user123') {
+      const userInfo = {
+        username: 'user',
+        name: 'Người dùng',
+        role: 'user',
+        email: 'user@aivideo.com'
+      };
+      
+      localStorage.setItem('authToken', 'user-token-' + Date.now());
+      localStorage.setItem('userInfo', JSON.stringify(userInfo));
+      setCurrentUser(userInfo);
+      
+      return { success: true, user: userInfo };
+    } 
+    else {
       throw new Error('Tên đăng nhập hoặc mật khẩu không chính xác');
     }
   };
 
   const logout = async () => {
-    localStorage.removeItem('adminToken');
+    localStorage.removeItem('authToken');
     localStorage.removeItem('userInfo');
     setCurrentUser(null);
   };
@@ -67,8 +84,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext. Provider value={value}>
-      {! loading && children}
+    <AuthContext.Provider value={value}>
+      {!loading && children}
     </AuthContext.Provider>
   );
 };

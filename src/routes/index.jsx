@@ -21,7 +21,7 @@ const publicRoutes = [
   {
     path:  "/login",
     component: LoginPage,
-    layout: DefaultLayout,
+    layout: null,
   },
 ];
 

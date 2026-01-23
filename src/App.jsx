@@ -4,6 +4,7 @@ import { publicRoutes, privateRoutes, userRoutes } from './routes';
 import DefaultLayout from './components/Layout/DefaultLayout';
 import { AuthProvider } from './contexts/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
+import UserRoute from './components/UserRoute';
 
 function App() {
   return (
@@ -41,7 +42,7 @@ function App() {
               );
             })}
 
-            {/* User Routes (không cần authentication cho demo) */}
+            {/* User Routes - BẢO VỆ với UserRoute */}
             {userRoutes.map((route, index) => {
               const Page = route.component;
               const Layout = route.layout;
@@ -51,19 +52,21 @@ function App() {
                   key={`user-${index}`}
                   path={route.path}
                   element={
-                    Layout ? (
-                      <Layout>
+                    <UserRoute>
+                      {Layout ? (
+                        <Layout>
+                          <Page />
+                        </Layout>
+                      ) : (
                         <Page />
-                      </Layout>
-                    ) : (
-                      <Page />
-                    )
+                      )}
+                    </UserRoute>
                   }
                 />
               );
             })}
 
-            {/* Private Routes (Admin) */}
+            {/* Private Routes (Admin) - BẢO VỆ với PrivateRoute */}
             {privateRoutes.map((route, index) => {
               const Page = route.component;
               const Layout = route.layout;
@@ -74,7 +77,7 @@ function App() {
                   path={route.path}
                   element={
                     <PrivateRoute>
-                      {Layout ?  (
+                      {Layout ? (
                         <Layout>
                           <Page />
                         </Layout>
